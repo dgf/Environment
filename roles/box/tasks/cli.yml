@@ -8,7 +8,6 @@
       - byobu
       - dive
       - git
-      - go-task
       - golang
       - htop
       - jq
