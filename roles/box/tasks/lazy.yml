@@ -1,5 +1,13 @@
 ---
 
+- name: Install Homebrew Lazy tools
+  homebrew:
+    update_homebrew: true
+    name:
+      - fzf
+      - lazygit
+      - neovim
+
 - name: Clone LazyVim starter
   git:
     depth: 1
