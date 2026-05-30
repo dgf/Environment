@@ -1,0 +1,5 @@
+---
+
+- name: Zsh compinit
+  command: rm -f ~/.zcompdump; compinit
+

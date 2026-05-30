@@ -1,0 +1,15 @@
+---
+
+- name: Clone LazyVim starter
+  git:
+    depth: 1
+    dest: ~/.config/nvim
+    repo: https://github.com/LazyVim/starter
+    single_branch: yes
+    version: main
+    update: false
+
+- name: Configure LazyVim colorscheme
+  copy:
+    src: lazy-colorscheme-gruvbox.lua
+    dest: ~/.config/nvim/lua/plugins/gruvbox-colorscheme.lua

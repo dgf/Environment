@@ -1,0 +1,18 @@
+---
+
+- name: Apply SSH Performance Tuning
+  become: true
+  notify: Restart SSH
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '{{ item.regexp }}'
+    line: '{{ item.line }}'
+    state: present
+    validate: '/usr/sbin/sshd -t -f %s'
+  loop:
+    - { regexp: '^#?UseDNS', line: 'UseDNS no' }
+    - { regexp: '^#?UsePAM', line: 'UsePAM no' }
+    - { regexp: '^#?GSSAPIAuthentication', line: 'GSSAPIAuthentication no' }
+    - { regexp: '^#?AddressFamily', line: 'AddressFamily inet' }
+    - { regexp: '^#?X11Forwarding', line: 'X11Forwarding no' }
+

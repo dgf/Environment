@@ -1,0 +1,11 @@
+---
+
+- name: Check if Homebrew is installed
+  register: brew_stat
+  stat:
+    path: '{{ brew_path }}'
+
+- name: Install Homebrew
+  when: not brew_stat.stat.exists
+  shell: NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+

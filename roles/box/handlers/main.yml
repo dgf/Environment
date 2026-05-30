@@ -1,0 +1,6 @@
+---
+
+- import_tasks: daemon.yml
+- import_tasks: sshd.yml
+- import_tasks: zsh.yml
+

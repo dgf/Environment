@@ -1,0 +1,22 @@
+---
+
+- name: Install Homebrew CLI packages
+  homebrew:
+    update_homebrew: true
+    name:
+      - bat
+      - byobu
+      - dive
+      - git
+      - go-task
+      - golang
+      - htop
+      - jq
+      - ncdu
+      - node@18
+      - openjdk@21
+      - podman-compose
+      - tig
+      - tokei
+      - yq
+

@@ -1,0 +1,9 @@
+---
+
+- import_tasks: apt.yml
+- import_tasks: sshd.yml
+- import_tasks: brew.yml
+- import_tasks: zsh.yml
+- import_tasks: cli.yml
+- import_tasks: lazy.yml
+

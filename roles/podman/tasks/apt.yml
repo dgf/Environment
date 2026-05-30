@@ -1,0 +1,11 @@
+---
+
+- name: Install apt packages
+  become: true
+  apt:
+    update_cache: yes
+    state: present
+    name:
+      - iptables
+      - uidmap
+

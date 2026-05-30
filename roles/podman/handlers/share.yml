@@ -1,0 +1,6 @@
+---
+
+- name: Mount Share
+  become: true
+  command: mount /share
+

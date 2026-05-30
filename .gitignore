@@ -1,5 +1,8 @@
 facts/
 inventory/clients
+client.*.yml
 
 share/*
 !share/README.md
+
+.DS_Store

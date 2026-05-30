@@ -1,0 +1,79 @@
+---
+
+- name: Install Homebrew Zsh packages
+  homebrew:
+    update_homebrew: true
+    name:
+      - eza
+      - fzf
+      - neovim
+      - oh-my-posh
+      - zoxide
+      - zsh
+      - zsh-autosuggestions
+      - zsh-completions
+
+- name: Set user shell to Zsh
+  become: true
+  user:
+    name: '{{ user_name }}'
+    shell: '{{ brew_path }}/bin/zsh'
+
+- name: Create Zsh config directory
+  file:
+    path: ~/.zsh
+    state: directory
+
+- name: Deploy Zsh environment
+  copy:
+    dest: ~/.zshenv
+    content: |
+      export ZSH=$HOME/.zsh
+
+      eval "$({{ brew_path }}/bin/brew shellenv)"
+
+      if type brew &>/dev/null; then
+        eval "$({{ brew_path }}/bin/fzf --zsh)"
+        eval "$({{ brew_path }}/bin/oh-my-posh init zsh --config gruvbox)"
+        eval "$({{ brew_path }}/bin/zoxide init --cmd cd zsh)"
+      fi
+
+- name: Deploy Zsh resource config
+  copy:
+    dest: ~/.zshrc
+    content: |
+      HISTSIZE=999999999
+      SAVEHIST=$HISTSIZE
+      HISTFILE=~/.history
+
+      setopt AUTO_CD
+      setopt EXTENDED_HISTORY
+      setopt HIST_IGNORE_ALL_DUPS
+      setopt HIST_IGNORE_SPACE
+      setopt HIST_NO_FUNCTIONS
+      setopt HIST_NO_STORE
+      setopt HIST_REDUCE_BLANKS
+      setopt INC_APPEND_HISTORY
+      setopt NO_HIST_BEEP
+      setopt SHARE_HISTORY
+
+      if type brew &>/dev/null; then
+        FPATH="$(brew --prefix)/share/zsh-completions:$FPATH"
+        source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+
+        autoload -Uz compinit
+        compinit
+      fi
+
+      autoload -U up-line-or-beginning-search
+      autoload -U down-line-or-beginning-search
+      zle -N up-line-or-beginning-search
+      zle -N down-line-or-beginning-search
+      bindkey "^[[A" up-line-or-beginning-search # Up
+      bindkey "^[[B" down-line-or-beginning-search # Down
+
+      alias l="eza --all --long --no-user --git --icons=always --mounts"
+      alias ll="eza --all --group --long --git --icons=always --mounts --time-style=long-iso"
+      alias lt="eza --long --no-user --git --icons=always --tree"
+      alias vim=nvim
+

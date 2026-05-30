@@ -1,0 +1,21 @@
+---
+
+- name: Create share directory
+  become: true
+  notify: Mount Share
+  file:
+    state: directory
+    mode: a=rx,u+w
+    path: /share
+
+- name: Configure share mount
+  become: true
+  notify:
+    - Daemon Reload
+    - Mount Share
+  lineinfile:
+    state: present
+    path: /etc/fstab
+    regexp: '^share '
+    line: 'share /share virtiofs rw,nofail 0 0'
+

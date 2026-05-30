@@ -1,0 +1,8 @@
+---
+
+- name: Enable Linger for user
+  become: true
+  command: /usr/bin/loginctl enable-linger {{ user_name }}
+  args:
+    creates: /var/lib/systemd/linger/{{ user_name }}
+

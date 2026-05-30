@@ -1,0 +1,20 @@
+---
+
+- name: Configure Debian Dev Box VM
+  hosts: dev-box-vms
+
+  vars:
+    brew_path: /home/linuxbrew/.linuxbrew
+    user_name: dgf
+
+  roles:
+    - box
+    - podman
+
+  tasks:
+    - name: Install Homebrew packages
+      community.general.homebrew:
+        update_homebrew: true
+        name:
+          - golang
+

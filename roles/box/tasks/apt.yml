@@ -1,0 +1,16 @@
+---
+
+- name: Install essential tools
+  become: true
+  apt:
+    update_cache: yes
+    state: present
+    name:
+      - build-essential
+      - curl
+      - dnsutils
+      - git
+      - iputils-ping
+      - net-tools
+      - telnet
+
