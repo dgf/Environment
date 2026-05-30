@@ -19,3 +19,23 @@
       - tokei
       - yq
 
+- name: Fix Byobu and tmux color mode
+  block:
+
+    - name: Create config directory
+      file:
+        state: directory
+        path: '~/.config/{{ item }}'
+      loop:
+        - tmux
+        - byobu
+
+    - name: Set terminal-overrides options
+      copy:
+        dest: '~/.config/{{ item }}/.tmux.conf'
+        content: |
+          set-option -ga terminal-overrides ",xterm-256color:Tc"
+      loop:
+        - tmux
+        - byobu
+
