@@ -4,5 +4,6 @@
   community.general.homebrew:
     update_homebrew: true
     name:
-      podman
+      - podman
+      - podman-compose
 

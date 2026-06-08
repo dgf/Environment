@@ -1,7 +1,7 @@
 ---
 
 - name: Configure Debian Dev Box VM
-  hosts: dev-box-vms
+  hosts: dev_box_vms
 
   vars:
     brew_path: /home/linuxbrew/.linuxbrew
