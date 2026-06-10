@@ -8,6 +8,7 @@
       - byobu
       - dive
       - git
+      - git-delta
       - git-lfs
       - golang
       - htop
