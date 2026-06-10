@@ -24,6 +24,11 @@
     path: ~/.zsh
     state: directory
 
+- name: Copy Oh My Posh config
+  copy:
+    src: oh-my-posh.yml
+    dest: ~/.zsh/oh-my-posh.yml
+
 - name: Deploy Zsh environment
   copy:
     dest: ~/.zshenv
@@ -34,7 +39,7 @@
 
       if type brew &>/dev/null; then
         eval "$({{ brew_path }}/bin/fzf --zsh)"
-        eval "$({{ brew_path }}/bin/oh-my-posh init zsh --config gruvbox)"
+        eval "$({{ brew_path }}/bin/oh-my-posh init zsh --config $ZSH/oh-my-posh.yml)"
         eval "$({{ brew_path }}/bin/zoxide init --cmd cd zsh)"
       fi
 
