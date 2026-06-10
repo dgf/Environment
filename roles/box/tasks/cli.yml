@@ -29,12 +29,17 @@
         - tmux
         - byobu
 
-    - name: Set terminal-overrides options
+    - name: Configure Byobu
       copy:
-        dest: '~/.config/{{ item }}/.tmux.conf'
+        dest: '~/.config/byobu/.tmux.conf'
         content: |
+          set -g set-clipboard on
           set-option -ga terminal-overrides ",xterm-256color:Tc"
-      loop:
-        - tmux
-        - byobu
+
+    - name: Configure tmux
+      copy:
+        dest: '~/.config/tmux/tmux.conf'
+        content: |
+          set -g set-clipboard on
+          set-option -ga terminal-overrides ",xterm-256color:Tc"
 

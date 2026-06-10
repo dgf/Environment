@@ -4,6 +4,7 @@
   homebrew:
     update_homebrew: true
     name:
+      - fd
       - lazygit
       - neovim
       - ripgrep
@@ -17,7 +18,12 @@
     version: main
     update: false
 
-- name: Configure LazyVim colorscheme
+- name: Copy LazyVim options
   copy:
-    src: lazy-colorscheme-gruvbox.lua
+    src: lazy-options.lua
+    dest: ~/.config/nvim/lua/config/options.lua
+
+- name: Copy LazyVim colorscheme
+  copy:
+    src: lazy-gruvbox.lua
     dest: ~/.config/nvim/lua/plugins/gruvbox-colorscheme.lua
