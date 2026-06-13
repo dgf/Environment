@@ -4,6 +4,7 @@
   homebrew:
     update_homebrew: true
     name:
+      - atop
       - bat
       - byobu
       - dive
@@ -14,8 +15,6 @@
       - htop
       - jq
       - ncdu
-      - node@18
-      - openjdk@21
       - tig
       - tokei
       - yq
