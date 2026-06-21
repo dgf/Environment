@@ -6,6 +6,7 @@
     name:
       - atop
       - bat
+      - btop
       - byobu
       - dive
       - git
