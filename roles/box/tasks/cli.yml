@@ -4,6 +4,7 @@
   homebrew:
     update_homebrew: true
     name:
+      - age
       - atop
       - bat
       - btop
@@ -14,8 +15,13 @@
       - git-lfs
       - golang
       - htop
+      - ipcalc
       - jq
+      - mtr
       - ncdu
+      - nmap
+      - pwgen
+      - sops
       - tig
       - tokei
       - yq
