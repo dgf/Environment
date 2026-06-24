@@ -7,3 +7,24 @@
       - podman
       - podman-compose
 
+- name: Link Podman Systemd Quadlet generator
+  become: true
+  file:
+    state: link
+    src: '{{ brew_path }}/opt/podman/libexec/podman/quadlet'
+    dest: /usr/lib/systemd/{{ item }}
+  loop:
+    - system-generators/podman-system-generator
+    - user-generators/podman-user-generator
+
+- name: Link Podman binaries
+  become: true
+  file:
+    state: link
+    src: '{{ brew_path }}/bin/{{ item }}'
+    dest: /usr/local/bin/{{ item }}
+  loop:
+    - conmon
+    - crun
+    - pasta
+

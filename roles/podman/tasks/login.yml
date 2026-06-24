@@ -6,3 +6,17 @@
   args:
     creates: /var/lib/systemd/linger/{{ user_name }}
 
+- name: Configure subuids for rootless operation
+  become: true
+  lineinfile:
+    create: true
+    path: /etc/subuid
+    line: "{{ user_name }}:100000:65536"
+
+- name: Configure subgids for rootless operation
+  become: true
+  lineinfile:
+    create: true
+    path: /etc/subgid
+    line: "{{ user_name }}:100000:65536"
+

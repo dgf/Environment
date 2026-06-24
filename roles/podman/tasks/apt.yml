@@ -2,10 +2,13 @@
 
 - name: Install apt packages
   become: true
+  notify: Reconfigure dbus user session
   apt:
     update_cache: yes
     state: present
     name:
       - iptables
+      - dbus-user-session
+      - systemd-container
       - uidmap
 

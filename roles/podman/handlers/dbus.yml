@@ -1,0 +1,6 @@
+---
+
+- name: Reconfigure dbus user session
+  become: true
+  command: dpkg-reconfigure dbus-user-session
+
