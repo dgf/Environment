@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if [ $# -eq 0 ]; then
+  echo "requires vm name"
+  exit 1
+fi
+
+host=$1
+inventory=$(curl -s 'http://192.168.64.1:7890/inventory' || echo '{"_meta":{"hostvars":{}},"all":{"hosts":[]}}')
+ip=$(echo "$inventory" | jq --raw-output --arg host "$host" '._meta.hostvars[$host].ansible_host // empty')
+
+SSH_PASS="$host" SSH_ASKPASS="$(dirname $0)/askpass" SSH_ASKPASS_REQUIRE=force ssh -A dgf@$ip

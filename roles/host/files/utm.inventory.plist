@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>host.utm.inventory</string>
+    <key>Program</key>
+    <string>/Users/dgf/Environment/roles/host/main</string>
+    <key>StandardOutPath</key>
+    <string>/Users/dgf/Environment/roles/host/out.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/dgf/Environment/roles/host/err.log</string>
+    <key>RunAtLoad</key>
+    <true/>
+  </dict>
+</plist>

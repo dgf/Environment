@@ -1,0 +1,15 @@
+[Unit]
+Description=Check in VM with Host Registry
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+StandardOutput=journal
+StandardError=journal
+ExecStartPre=/bin/sh -c 'for i in $(seq 1 37); do nc -z -w1 192.168.64.1 7890 && exit 0; echo "have to wait a second"; sleep 1; done; exit 1'
+ExecStart=/usr/bin/curl --verbose --retry 7 --retry-delay 3 -X POST http://192.168.64.1:7890/inventory -d "hostname=%H"
+
+[Install]
+WantedBy=multi-user.target

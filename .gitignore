@@ -1,8 +1,13 @@
+box.*.yml
 facts/
 inventory/
-client.*.yml
+inventory/utm
 
-share/*
+roles/host/err.log
+roles/host/main
+roles/host/out.log
+
+share/
 !share/README.md
 
 .DS_Store

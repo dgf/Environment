@@ -1,0 +1,31 @@
+---
+
+- name: Install Homebrew UTM cask
+  homebrew_cask:
+    cask:
+      - utm
+
+- name: Check if inventory service is compiled
+  delegate_to: localhost
+  register: main_stat
+  stat:
+    path: roles/host/main
+
+- name: Compile inventory service binary
+  delegate_to: localhost
+  when: not main_stat.stat.exists
+  command:
+    cmd: go build main.go
+    chdir: roles/host
+
+- name: Deploy Host VM inventory service agent
+  copy:
+    src: utm.inventory.plist
+    dest: ~/Library/LaunchAgents/host.utm.inventory.plist
+
+- name: Launch Host VM inventory service
+  community.general.launchd:
+    name: host.utm.inventory
+    enabled: true
+    state: started
+

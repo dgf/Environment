@@ -21,6 +21,7 @@
       - ncdu
       - nmap
       - pwgen
+      - rsync
       - sops
       - tig
       - tokei

@@ -1,0 +1,110 @@
+---
+
+- name: Tap Homebrew repositories
+  homebrew_tap:
+    tap:
+      - felixkratz/formulae
+      - nikitabobko/tap
+      - tinygo-org/tools
+
+- name: Install Homebrew formulas
+  homebrew:
+    update_homebrew: true
+    formula:
+      - age
+      - ansible
+      - ascii
+      - bat
+      - btop
+      - colima
+      - cowsay
+      - d2
+      - dive
+      - docker
+      - docker-compose
+      - eza
+      - felixkratz/formulae/sketchybar
+      - figlet
+      - fzf
+      - ghostscript
+      - git-delta
+      - git-lfs
+      - go
+      - golangci-lint
+      - gops
+      - htop
+      - httpie
+      - imagemagick
+      - ipcalc
+      - jenv
+      - katago
+      - lazygit
+      - lld
+      - maven
+      - mtr
+      - nasm
+      - ncdu
+      - neovim
+      - nmap
+      - nvm
+      - nvtop
+      - openconnect
+      - openjdk@21
+      - openvpn
+      - plantuml
+      - pwgen
+      - rbenv
+      - ripgrep
+      - rust
+      - slides
+      - sops
+      - telnet
+      - tig
+      - tinygo-org/tools/tinygo
+      - tokei
+      - uv
+      - watch
+      - wget
+      - xmlstarlet
+      - yq
+      - zig
+      - zoxide
+
+- name: Install Homebrew casks
+  homebrew_cask:
+    cask:
+      - adobe-acrobat-reader
+      - aerospace
+      - bitwarden
+      - brave-browser
+      - discord
+      - drawio
+      - firefox
+      - font-atkynson-mono-nerd-font
+      - font-caskaydia-mono-nerd-font
+      - font-fira-code-nerd-font
+      - font-go-mono-nerd-font
+      - font-hack-nerd-font
+      - font-sketchybar-app-font
+      - ghostty
+      - google-chrome
+      - ijhttp
+      - inkscape
+      - jetbrains-toolbox
+      - linear
+      - macpass
+      - microsoft-auto-update
+      - microsoft-teams
+      - nextcloud
+      - oracle-jdk
+      - orange
+      - puremac
+      - sabaki
+      - sf-symbols
+      - shortcat
+      - slack
+      - telegram
+      - vagrant
+      - virtualbox
+      - zoom
+

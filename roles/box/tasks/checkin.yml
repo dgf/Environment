@@ -1,0 +1,17 @@
+---
+
+- name: Deploy vm-checkin.service
+  become: yes
+  notify: Daemon Reload
+  copy:
+    src: vm-checkin.service
+    dest: /etc/systemd/system/vm-checkin.service
+
+- name: Ensure service is enabled and started
+  become: yes
+  notify: Daemon Reload
+  systemd:
+    name: vm-checkin
+    enabled: yes
+    state: started
+

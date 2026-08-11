@@ -13,10 +13,10 @@
 
   tasks:
     - name: Install Homebrew packages
-      community.general.homebrew:
+      homebrew:
         update_homebrew: true
-        name:
-          - golang
+        formula:
+          - go
 
     - name: Git config
       copy:
